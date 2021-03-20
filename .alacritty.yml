@@ -1,0 +1,131 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator
+
+# Any items in the `env` entry below will be added as
+# environment variables. Some entries may override variables
+# set by alacritty it self.
+env:
+  # TERM env customization.
+  #
+  # If this property is not set, alacritty will set it to xterm-256color.
+  #
+  # Note that some xterm terminfo databases don't declare support for italics.
+  # You can verify this by checking for the presence of `smso` and `sitm` in
+  # `infocmp xterm-256color`.
+  TERM: xterm #-256color-italic
+
+# Base16 Dracula 256 - alacritty color config
+# Mike Barkmin (http://github.com/mikebarkmin) based on Dracula Theme (http://github.com/dracula)
+colors:
+  # Default colors
+  primary:
+    background: '0x282936'
+    foreground: '0xe9e9f4'
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '0x282936'
+    cursor: '0xe9e9f4'
+
+  # Normal colors
+  normal:
+    black:   '0x282936'
+    red:     '0xea51b2'
+    green:   '0xebff87'
+    yellow:  '0x00f769'
+    blue:    '0x62d6e8'
+    magenta: '0xb45bcf'
+    cyan:    '0xa1efe4'
+    white:   '0xe9e9f4'
+
+  # Bright colors
+  bright:
+    black:   '0x626483'
+    red:     '0xea51b2'
+    green:   '0xebff87'
+    yellow:  '0x00f769'
+    blue:    '0x62d6e8'
+    magenta: '0xb45bcf'
+    cyan:    '0xa1efe4'
+    white:   '0xf7f7fb'
+
+  indexed_colors:
+    - { index: 16, color: '0xb45bcf' }
+    - { index: 17, color: '0x00f769' }
+    - { index: 18, color: '0x3a3c4e' }
+    - { index: 19, color: '0x4d4f68' }
+    - { index: 20, color: '0x62d6e8' }
+    - { index: 21, color: '0xf1f2f8' }
+
+
+# Background opacity
+background_opacity: 0.9
+
+
+# Allow terminal applications to change Alacritty's window title.
+window.dynamic_title: true
+
+
+# Window decorations
+window:
+  dimensions:
+    columns: 80
+    lines: 48
+  position:
+      x: 683
+      #y: 0
+
+  # Window title
+  title: L
+
+
+  # Window class (Linux/BSD only):
+  #class:
+    # Application instance name
+    #instance: Alacritty
+    # General application class
+    #general: Alacritty
+   
+
+
+key_bindings:
+  #- { key: Q,        mods: Alt,          action: Quit      }
+  #- { key: Q,        mods: Control,      action: Quit      }
+  # tmux
+  # split pane
+  - { key: H,        mods: Control,      chars: "\x01\x22" }
+  - { key: V,        mods: Control,      chars: "\x01\x25" }
+  # close pane
+  - { key: X,        mods: Control,      chars: "\x01\x78" }
+  # zoom pane
+  - { key: Z,        mods: Control|Shift,      chars: "\x01\x7a" }
+  # new tab
+  - { key: T,        mods: Control,      chars: "\x01\x63" }
+  # rename tab
+  - { key: R,        mods: Control|Shift,chars: "\x01\x2c" }
+  # close tab
+  - { key: W,        mods: Control,      chars: "\x01\x26" }
+  # next, previous tab
+  - { key: Tab,      mods: Control,      chars: "\x01\x6e" }
+  - { key: Tab,      mods: Control|Shift,chars: "\x01\x70" }
+  # more at https://arslan.io/2018/02/05/gpu-accelerated-terminal-alacritty/
+
+
+# Shell
+#
+# You can set shell.program to the path of your favorite shell, e.g. /bin/fish.
+# Entries in shell.args are passed unmodified as arguments to the shell.
+shell:
+  program: /bin/zsh
+  args:
+    - -l
+    - -c
+    - "tmux attach || tmux"
+
+cursor:
+  # Cursor style
+  #
+  # Values for 'style':
+  #   - ▇ Block
+  #   - _ Underline
+  #   - | Beam
+  style: Block
